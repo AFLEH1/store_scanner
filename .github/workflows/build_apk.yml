@@ -25,16 +25,16 @@ jobs:
           channel: 'stable'
 
       - name: Generate Android Project Structure
-        run: flutter create . --platforms=android --org=com.example
+        run: flutter create . --platforms=android
 
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Build Release APK
-        run: flutter build apk --release --no-tree-shake-icons
+      - name: Build APK
+        run: flutter build apk --debug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: app-debug
+          path: build/app/outputs/flutter-apk/app-debug.apk
